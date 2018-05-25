@@ -1,1 +1,8 @@
-console.error('did setup');
+const apiKeys = require('./apiKeys.js');
+const events = require('./events.js');
+
+(function startApp () {
+  $('#output-div').hide();
+  apiKeys.retrieveAPIKey();
+  events.addSubmitEvent();
+})();
