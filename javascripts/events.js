@@ -36,13 +36,13 @@ function checkInput (input) {
 function addForecastButtons () {
   $('#3daybtn').on('click', function () {
     $('#3dayoutput').show();
-    $('#current-btn').show();
+    $('#current-weather-btn').show();
     $('#output').hide();
     $('#5dayoutput').hide();
   });
   $('#5daybtn').on('click', function () {
     $('#5dayoutput').show();
-    $('#current-btn').show();
+    $('#current-weather-btn').show();
     $('#output').hide();
     $('#3dayoutput').hide();
   });
@@ -53,6 +53,7 @@ function addCurrentWeatherButton () {
     $('#output').show();
     $('#3dayoutput').hide();
     $('#5dayoutput').hide();
+    $('#current-weather-btn').hide();
   });
 }
 
