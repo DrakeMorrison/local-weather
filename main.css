@@ -10,3 +10,7 @@ body {
 .text-white {
   color: white;
 }
+
+#current-weather-btn {
+  margin-bottom: 1.5em;
+}
