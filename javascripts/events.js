@@ -17,6 +17,11 @@ function startProcess () {
   weatherData.then(function (results) {
     dom.buildDom(results);
     $('#output-div').show();
+    $('#3dayoutput').hide();
+    $('#5dayoutput').hide();
+    $('#current-weather-btn').hide();
+    addForecastButtons();
+    addCurrentWeatherButton();
   });
 }
 
@@ -26,6 +31,29 @@ function checkInput (input) {
   } else {
     alert('Please type in a 5-digit zip code, thanks!');
   }
+}
+
+function addForecastButtons () {
+  $('#3daybtn').on('click', function () {
+    $('#3dayoutput').show();
+    $('#current-btn').show();
+    $('#output').hide();
+    $('#5dayoutput').hide();
+  });
+  $('#5daybtn').on('click', function () {
+    $('#5dayoutput').show();
+    $('#current-btn').show();
+    $('#output').hide();
+    $('#3dayoutput').hide();
+  });
+}
+
+function addCurrentWeatherButton () {
+  $('#current-weather-btn').on('click', function () {
+    $('#output').show();
+    $('#3dayoutput').hide();
+    $('#5dayoutput').hide();
+  });
 }
 
 module.exports = {

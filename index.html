@@ -23,24 +23,16 @@
 
   <div class="jumbotron text-center" id='output-div'>
     <div class='container'>
+      <div clas='col-sm-12'>
+          <button id='current-weather-btn' type="button" class="btn btn-success btn-lg">Current Weather</button>
+      </div>
       <div class="btn-group" role="group" aria-label="...">
-        <button type="button" class="btn btn-danger">3 Day Forecast</button>
-        <button type="button" class="btn btn-primary">5 Day Forecast</button>
+        <button id='3daybtn' type="button" class="btn btn-danger">3 Day Forecast</button>
+        <button id='5daybtn' type="button" class="btn btn-primary">5 Day Forecast</button>
       </div>
-      <div class='row current' id='output'>
-      </div>
-      <div class='row 5day'>
-        <div class='col-md-2 col-md-offset-1'>Dude</div>
-        <div class='col-md-2'>Dude</div>
-        <div class='col-md-2'>Dude</div>
-        <div class='col-md-2'>Dude</div>
-        <div class='col-md-2'>Dude</div>
-      </div>
-      <div class='row 3day'>
-        <div class='col-md-4'>Dude</div>
-        <div class='col-md-4'>Dude</div>
-        <div class='col-md-4'>Dude</div>
-      </div>
+      <div class='row current' id='output'></div>
+      <div class='row 5day' id='5dayoutput'></div>
+      <div class='row 3day' id='3dayoutput'></div>
     </div>
   </div>
 
