@@ -9,8 +9,32 @@
   <title>Local Weather</title>
 </head>
 <body>
-  <h1>Local Weather</h1>
+  <h1 class='text-center text-white'>Local Weather</h1>
 
+  <div class='center-block search-bar'>
+    <div class="input-group">
+      <span class="input-group-addon"><span class='glyphicon glyphicon-search'></span></span>
+      <input id='search-bar-input' type="number" class="form-control" placeholder="Zip-code" aria-describedby="basic-addon1">
+      <span class="input-group-btn">
+        <button id='submit-btn' class="btn btn-default" type="button">Get the Weather</button>
+      </span>
+    </div>
+  </div>
+
+  <div class="jumbotron text-center" id='output-div'>
+    <div class='container'>
+      <div clas='col-sm-12'>
+          <button id='current-weather-btn' type="button" class="btn btn-success btn-lg">Current Weather</button>
+      </div>
+      <div class="btn-group" role="group" aria-label="...">
+        <button id='3daybtn' type="button" class="btn btn-danger">3 Day Forecast</button>
+        <button id='5daybtn' type="button" class="btn btn-primary">5 Day Forecast</button>
+      </div>
+      <div class='row current' id='output'></div>
+      <div class='row 5day' id='5dayoutput'></div>
+      <div class='row 3day' id='3dayoutput'></div>
+    </div>
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
