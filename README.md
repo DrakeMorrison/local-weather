@@ -17,16 +17,16 @@
 
 ## Screenshots
 ### Home Page
-![Home Page]()
+![Home Page](https://github.com/DrakeMorrison/local-weather/raw/master/screenshots/home-page.png)
 
 ### Current Weather
-![Current Weather]()
+![Current Weather](https://github.com/DrakeMorrison/local-weather/raw/master/screenshots/current-weather.png)
 
 ### 3-day Forecast
-![3-day Forecast]()
+![3-day Forecast](https://github.com/DrakeMorrison/local-weather/raw/master/screenshots/3-day-forecast.png)
 
 ### 5-day Forecast
-![5-day Forecast]()
+![5-day Forecast](https://github.com/DrakeMorrison/local-weather/raw/master/screenshots/5-day-forecast.png)
 
 ## How To Run
 1. Clone this repo and cd into it
