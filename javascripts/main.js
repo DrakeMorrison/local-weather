@@ -7,4 +7,5 @@ const events = require('./events.js');
   apiKeys.retrieveAPIKey();
   events.addSubmitEvent();
   events.addSaveEvent();
+  events.addViewSavedEvent();
 })();
