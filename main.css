@@ -11,6 +11,6 @@ body {
   color: white;
 }
 
-#current-weather-btn {
+#current-weather-btn, #saved-forecasts-btn {
   margin-bottom: 1.5em;
 }

@@ -5,4 +5,5 @@ const events = require('./events.js');
   $('#output-div').hide();
   apiKeys.retrieveAPIKey();
   events.addSubmitEvent();
+  events.addSaveEvent();
 })();

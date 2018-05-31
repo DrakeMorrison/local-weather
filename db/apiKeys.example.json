@@ -2,6 +2,16 @@
   "apiKeys": [
     {
       "apiKey": ""
+    },
+    {
+      "firebase": {
+        "apiKey": "",
+        "authDomain": "",
+        "databaseURL": "",
+        "projectId": "",
+        "storageBucket": "",
+        "messagingSenderId": ""
+      }
     }
   ]
 }

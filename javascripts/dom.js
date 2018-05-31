@@ -3,17 +3,18 @@ function buildCurrentWeather (weatherData) {
   domString += `<div class='col-md-12'>`;
   domString += `<h1>Current Weather</h1>`;
   domString += `<div class="panel panel-default">`;
-  domString += `<div class="panel-heading">${weatherData.name}</div>`;
+  domString += `<div class="panel-heading nameDate" data-nameDate='${weatherData.name}'>${weatherData.name}</div>`;
   domString += `<ul class="list-group">`;
-  domString += `<li class="list-group-item">Temperature: <strong class=''>${weatherData.main.temp}</strong>&#176;F</li>`;
-  domString += `<li class="list-group-item">High: ${weatherData.main.temp_max}&#176;F</li>`;
-  domString += `<li class="list-group-item">Low: ${weatherData.main.temp_min}&#176;F</li>`;
-  domString += `<li class="list-group-item">Humidity: ${weatherData.main.humidity}%</li>`;
-  domString += `<li class="list-group-item text-capitalize">${weatherData.weather[0].description}</li>`;
-  domString += `<li class="list-group-item">Air Pressure: ${weatherData.main.pressure} hpa</li>`;
-  domString += `<li class="list-group-item">Wind Speed: ${weatherData.wind.speed} MPH</li>`;
+  domString += `<li class="list-group-item main-temp" data-main-temp='${weatherData.main.temp}'>Temperature: <strong class='main-temp'>${weatherData.main.temp}</strong>&#176;F</li>`;
+  domString += `<li class="list-group-item max-temp" data-max-temp='${weatherData.main.temp_max}'>High: ${weatherData.main.temp_max}&#176;F</li>`;
+  domString += `<li class="list-group-item min-temp" data-min-temp='${weatherData.main.temp_min}'>Low: ${weatherData.main.temp_min}&#176;F</li>`;
+  domString += `<li class="list-group-item humidity" data-humidity='${weatherData.main.humidity}'>Humidity: ${weatherData.main.humidity}%</li>`;
+  domString += `<li class="list-group-item text-capitalize description" data-description='${weatherData.weather[0].description}'>${weatherData.weather[0].description}</li>`;
+  domString += `<li class="list-group-item air-pressure" data-air-pressure='${weatherData.main.pressure}'>Air Pressure: ${weatherData.main.pressure} hpa</li>`;
+  domString += `<li class="list-group-item wind-speed" data-wind-speed='${weatherData.wind.speed}'>Wind Speed: ${weatherData.wind.speed} MPH</li>`;
   domString += `</ul>`;
   domString += `</div>`;
+  domString += `<button type="button" class="btn btn-warning save-btn">Save Forecast</button>`;
   domString += `</div>`;
 
   printToDom(domString, '#output');
@@ -29,17 +30,18 @@ function build5DayWeather (data) {
       domString += `<div class='col-md-2'>`;
     }
     domString += `<div class="panel panel-default">`;
-    domString += `<div class="panel-heading">${data.list[i].dt_txt}</div>`;
+    domString += `<div class="panel-heading nameDate" data-nameDate='${data.list[i].dt_txt}'>${data.list[i].dt_txt}</div>`;
     domString += `<ul class="list-group">`;
-    domString += `<li class="list-group-item">Temperature: <strong class=''>${data.list[i].main.temp}</strong>&#176;F</li>`;
-    domString += `<li class="list-group-item">High: ${data.list[i].main.temp_max}&#176;F</li>`;
-    domString += `<li class="list-group-item">Low: ${data.list[i].main.temp_min}&#176;F</li>`;
-    domString += `<li class="list-group-item">Humidity: ${data.list[i].main.humidity}%</li>`;
-    domString += `<li class="list-group-item text-capitalize">${data.list[i].weather[0].description}</li>`;
-    domString += `<li class="list-group-item">Air Pressure: ${data.list[i].main.pressure} hpa</li>`;
-    domString += `<li class="list-group-item">Wind Speed: ${data.list[i].wind.speed} MPH</li>`;
+    domString += `<li class="list-group-item">Temperature: <strong class='main-temp' data-main-temp='${data.list[i].main.temp}'>${data.list[i].main.temp}</strong>&#176;F</li>`;
+    domString += `<li class="list-group-item max-temp" data-max-temp='${data.list[i].main.temp_max}'>High: ${data.list[i].main.temp_max}&#176;F</li>`;
+    domString += `<li class="list-group-item min-temp" data-min-temp='${data.list[i].main.temp_min}'>Low: ${data.list[i].main.temp_min}&#176;F</li>`;
+    domString += `<li class="list-group-item humidity" data-humidity='${data.list[i].main.humidity}'>Humidity: ${data.list[i].main.humidity}%</li>`;
+    domString += `<li class="list-group-item text-capitalize description" data-description='${data.list[i].weather[0].description}'>${data.list[i].weather[0].description}</li>`;
+    domString += `<li class="list-group-item air-pressure" data-air-pressure='${data.list[i].main.pressure}'>Air Pressure: ${data.list[i].main.pressure} hpa</li>`;
+    domString += `<li class="list-group-item wind-speed" data-wind-speed='${data.list[i].wind.speed}'>Wind Speed: ${data.list[i].wind.speed} MPH</li>`;
     domString += `</ul>`;
     domString += `</div>`;
+    domString += `<button type="button" class="btn btn-warning save-btn">Save Forecast</button>`;
     domString += `</div>`;
   }
 
@@ -52,17 +54,18 @@ function build3DayWeather (data) {
   for (let i = 4; i < 28; i += 8) {
     domString += `<div class='col-md-4'>`;
     domString += `<div class="panel panel-default">`;
-    domString += `<div class="panel-heading">${data.list[i].dt_txt}</div>`;
+    domString += `<div class="panel-heading nameDate" data-nameDate='${data.list[i].dt_txt}'>${data.list[i].dt_txt}</div>`;
     domString += `<ul class="list-group">`;
-    domString += `<li class="list-group-item">Temperature: <strong class=''>${data.list[i].main.temp}</strong>&#176;F</li>`;
-    domString += `<li class="list-group-item">High: ${data.list[i].main.temp_max}&#176;F</li>`;
-    domString += `<li class="list-group-item">Low: ${data.list[i].main.temp_min}&#176;F</li>`;
-    domString += `<li class="list-group-item">Humidity: ${data.list[i].main.humidity}%</li>`;
-    domString += `<li class="list-group-item text-capitalize">${data.list[i].weather[0].description}</li>`;
-    domString += `<li class="list-group-item">Air Pressure: ${data.list[i].main.pressure} hpa</li>`;
-    domString += `<li class="list-group-item">Wind Speed: ${data.list[i].wind.speed} MPH</li>`;
+    domString += `<li class="list-group-item">Temperature: <strong class='main-temp' data-main-temp='${data.list[i].main.temp}'>${data.list[i].main.temp}</strong>&#176;F</li>`;
+    domString += `<li class="list-group-item max-temp" data-max-temp='${data.list[i].main.temp_max}'>High: ${data.list[i].main.temp_max}&#176;F</li>`;
+    domString += `<li class="list-group-item min-temp" data-min-temp='${data.list[i].main.temp_min}'>Low: ${data.list[i].main.temp_min}&#176;F</li>`;
+    domString += `<li class="list-group-item humidity" data-humidity='${data.list[i].main.humidity}'>Humidity: ${data.list[i].main.humidity}%</li>`;
+    domString += `<li class="list-group-item text-capitalize description" data-description='${data.list[i].weather[0].description}'>${data.list[i].weather[0].description}</li>`;
+    domString += `<li class="list-group-item air-pressure" data-air-pressure='${data.list[i].main.pressure}'>Air Pressure: ${data.list[i].main.pressure} hpa</li>`;
+    domString += `<li class="list-group-item wind-speed" data-wind-speed='${data.list[i].wind.speed}'>Wind Speed: ${data.list[i].wind.speed} MPH</li>`;
     domString += `</ul>`;
     domString += `</div>`;
+    domString += `<button type="button" class="btn btn-warning save-btn">Save Forecast</button>`;
     domString += `</div>`;
   }
 
