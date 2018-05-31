@@ -30,7 +30,7 @@ function build5DayWeather (data) {
       domString += `<div class='col-md-2'>`;
     }
     domString += `<div class="panel panel-default">`;
-    domString += `<div class="panel-heading nameDate" data-nameDate='${data.list[i].name}'>${data.list[i].dt_txt}</div>`;
+    domString += `<div class="panel-heading nameDate" data-nameDate='${data.list[i].dt_txt}'>${data.list[i].dt_txt}</div>`;
     domString += `<ul class="list-group">`;
     domString += `<li class="list-group-item">Temperature: <strong class='main-temp' data-main-temp='${data.list[i].main.temp}'>${data.list[i].main.temp}</strong>&#176;F</li>`;
     domString += `<li class="list-group-item max-temp" data-max-temp='${data.list[i].main.temp_max}'>High: ${data.list[i].main.temp_max}&#176;F</li>`;
@@ -54,7 +54,7 @@ function build3DayWeather (data) {
   for (let i = 4; i < 28; i += 8) {
     domString += `<div class='col-md-4'>`;
     domString += `<div class="panel panel-default">`;
-    domString += `<div class="panel-heading nameDate" data-nameDate='${data.list[i].name}'>${data.list[i].dt_txt}</div>`;
+    domString += `<div class="panel-heading nameDate" data-nameDate='${data.list[i].dt_txt}'>${data.list[i].dt_txt}</div>`;
     domString += `<ul class="list-group">`;
     domString += `<li class="list-group-item">Temperature: <strong class='main-temp' data-main-temp='${data.list[i].main.temp}'>${data.list[i].main.temp}</strong>&#176;F</li>`;
     domString += `<li class="list-group-item max-temp" data-max-temp='${data.list[i].main.temp_max}'>High: ${data.list[i].main.temp_max}&#176;F</li>`;
