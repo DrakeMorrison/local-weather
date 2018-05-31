@@ -1,5 +1,6 @@
 const weatherAPI = require('./weatherapi.js');
 const dom = require('./dom.js');
+const firebaseApi = require('./firebaseApi.js');
 
 function addSubmitEvent () {
   $('#submit-btn').on('click', startProcess);
@@ -57,6 +58,25 @@ function addCurrentWeatherButton () {
   });
 }
 
+function addSaveEvent () {
+  $(document).on('click', '.save-btn', function (e) {
+    const forecastCard = $(e.target).siblings('.panel');
+    const forecastObj = {
+      'nameDate': forecastCard.find('.nameDate').data('nameDate'),
+      'mainTemp': forecastCard.find('.main-temp').data('main-temp'),
+      'maxTemp': forecastCard.find('.max-temp').data('max-temp'),
+      'minTemp': forecastCard.find('.min-temp').data('min-temp'),
+      'humidity': forecastCard.find('.humidity').data('humidity'),
+      'description': forecastCard.find('.description').data('description'),
+      'airPressure': forecastCard.find('.air-pressure').data('air-pressure'),
+      'windSpeed': forecastCard.find('.wind-speed').data('wind-speed'),
+      'isScary': false,
+    };
+    firebaseApi.saveForecast(forecastObj);
+  });
+}
+
 module.exports = {
   addSubmitEvent,
+  addSaveEvent,
 };

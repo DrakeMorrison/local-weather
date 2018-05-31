@@ -1,4 +1,6 @@
+'use strict';
 const data = require('./data.js');
+const firebaseApi = require('./firebaseApi.js');
 
 function getAPIKey () {
   return new Promise(function (resolve, reject) {
@@ -15,6 +17,8 @@ function getAPIKey () {
 function retrieveAPIKey () {
   getAPIKey().then(function (results) {
     data.setKey(results.apiKeys[0].apiKey);
+    firebaseApi.setConfig(results.apiKeys[1].firebase);
+    firebase.initializeApp(results.apiKeys[1].firebase);
   }).catch(console.error.bind(console));
 }
 
