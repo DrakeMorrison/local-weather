@@ -1,3 +1,4 @@
+'use strict';
 function buildCurrentWeather (weatherData) {
   let domString = '';
   domString += `<div class='col-md-12'>`;

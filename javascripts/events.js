@@ -1,3 +1,4 @@
+'use strict';
 const weatherAPI = require('./weatherapi.js');
 const dom = require('./dom.js');
 const firebaseApi = require('./firebaseApi.js');

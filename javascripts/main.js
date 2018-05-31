@@ -1,3 +1,4 @@
+'use strict';
 const apiKeys = require('./apiKeys.js');
 const events = require('./events.js');
 

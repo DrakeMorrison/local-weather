@@ -1,3 +1,4 @@
+'use strict';
 const data = require('./data.js');
 
 function getCurrentWeather (argObject) {
