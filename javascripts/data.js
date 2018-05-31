@@ -1,3 +1,4 @@
+'use strict';
 let currentWeather = {};
 let fiveDayWeather = {};
 let apiKey = '';

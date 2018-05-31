@@ -1,3 +1,4 @@
+'use strict';
 const apiKeys = require('./apiKeys.js');
 const events = require('./events.js');
 
@@ -6,4 +7,5 @@ const events = require('./events.js');
   apiKeys.retrieveAPIKey();
   events.addSubmitEvent();
   events.addSaveEvent();
+  events.addViewSavedEvent();
 })();

@@ -1,3 +1,4 @@
+'use strict';
 const weatherAPI = require('./weatherapi.js');
 const dom = require('./dom.js');
 const firebaseApi = require('./firebaseApi.js');
@@ -20,6 +21,7 @@ function startProcess () {
     $('#output-div').show();
     $('#3dayoutput').hide();
     $('#5dayoutput').hide();
+    $('#saved-forecasts-div').hide();
     $('#current-weather-btn').hide();
     addForecastButtons();
     addCurrentWeatherButton();
@@ -76,7 +78,20 @@ function addSaveEvent () {
   });
 }
 
+function addViewSavedEvent () {
+  $('#saved-forecasts-btn').on('click', function () {
+    firebaseApi.getSavedForecasts().then(function (results) {
+      dom.buildSavedForecasts(results);
+      $('#output').hide();
+      $('#3dayoutput').hide();
+      $('#5dayoutput').hide();
+      $('#saved-forecasts-div').show();
+    });
+  });
+}
+
 module.exports = {
   addSubmitEvent,
   addSaveEvent,
+  addViewSavedEvent,
 };

@@ -22,7 +22,27 @@ function saveForecast (input) {
   });
 }
 
+function getSavedForecasts () {
+  const forecastsAndKeys = [];
+  return new Promise(function (resolve, reject) {
+    $.ajax(`${firebaseConfig.databaseURL}/forecasts.json`)
+      .then(function (allForecasts) {
+        if (allForecasts !== null) {
+          Object.keys(allForecasts).forEach(function (key) {
+            allForecasts[key].id = key;
+            forecastsAndKeys.push(allForecasts[key]);
+          });
+        }
+        resolve(forecastsAndKeys);
+      })
+      .catch(function (error) {
+        reject(error);
+      });
+  });
+}
+
 module.exports = {
   setConfig,
   saveForecast,
+  getSavedForecasts,
 };
