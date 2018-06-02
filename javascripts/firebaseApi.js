@@ -45,10 +45,14 @@ function deleteForecast (forecastId) {
   return new Promise(function (resolve, reject) {
     $.ajax({
       method: 'DELETE',
-      url: '',
+      url: `${firebaseConfig.databaseURL}/forecasts/${forecastId}.json`,
     })
-      .done()
-      .fail();
+      .done(function () {
+        resolve();
+      })
+      .fail(function (error) {
+        reject(error);
+      });
   });
 }
 
