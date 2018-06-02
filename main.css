@@ -14,3 +14,7 @@ body {
 #current-weather-btn, #saved-forecasts-btn {
   margin-bottom: 1.5em;
 }
+
+.btn-danger {
+  margin-bottom: 40px;
+}
