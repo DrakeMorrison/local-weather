@@ -3,7 +3,7 @@ function buildCurrentWeather (weatherData) {
   let domString = '';
   domString += `<div class='col-md-12'>`;
   domString += `<h1>Current Weather</h1>`;
-  domString += `<div class="panel panel-default">`;
+  domString += `<div class="panel panel-default" data-isScary='false'>`;
   domString += `<div class="panel-heading nameDate" data-nameDate='${weatherData.name}'>${weatherData.name}</div>`;
   domString += `<ul class="list-group">`;
   domString += `<li class="list-group-item main-temp" data-main-temp='${weatherData.main.temp}'>Temperature: <strong class='main-temp'>${weatherData.main.temp}</strong>&#176;F</li>`;
@@ -30,7 +30,7 @@ function build5DayWeather (data) {
     } else {
       domString += `<div class='col-md-2'>`;
     }
-    domString += `<div class="panel panel-default">`;
+    domString += `<div class="panel panel-default" data-isScary='false'>`;
     domString += `<div class="panel-heading nameDate" data-nameDate='${data.list[i].dt_txt}'>${data.list[i].dt_txt}</div>`;
     domString += `<ul class="list-group">`;
     domString += `<li class="list-group-item">Temperature: <strong class='main-temp' data-main-temp='${data.list[i].main.temp}'>${data.list[i].main.temp}</strong>&#176;F</li>`;
@@ -54,7 +54,7 @@ function build3DayWeather (data) {
   domString += `<h1>3 Day Forecast</h1>`;
   for (let i = 4; i < 28; i += 8) {
     domString += `<div class='col-md-4'>`;
-    domString += `<div class="panel panel-default">`;
+    domString += `<div class="panel panel-default" data-isScary='false'>`;
     domString += `<div class="panel-heading nameDate" data-nameDate='${data.list[i].dt_txt}'>${data.list[i].dt_txt}</div>`;
     domString += `<ul class="list-group">`;
     domString += `<li class="list-group-item">Temperature: <strong class='main-temp' data-main-temp='${data.list[i].main.temp}'>${data.list[i].main.temp}</strong>&#176;F</li>`;
@@ -90,7 +90,7 @@ function buildSavedForecasts (inputArray) {
       domString += `<div class='row'>`;
     }
     domString += `<div class='col-md-4'>`;
-    domString += `<div class="panel panel-default">`;
+    domString += `<div class="panel panel-${input.isScary ? 'danger' : 'default'}" data-isScary=${input.isScary} data-firebase-id=${input.id}>`;
     domString += `<div class="panel-heading">${input.nameDate}</div>`;
     domString += `<ul class="list-group">`;
     domString += `<li class="list-group-item">Temperature: <strong>${input.mainTemp}</strong>&#176;F</li>`;
@@ -102,7 +102,8 @@ function buildSavedForecasts (inputArray) {
     domString += `<li class="list-group-item">Wind Speed: ${input.windSpeed} MPH</li>`;
     domString += `</ul>`;
     domString += `</div>`;
-    domString += `<button class="btn btn-danger" type="submit">Delete</button>`;
+    domString += `<button class="btn btn-danger delete-btn" type="submit">Delete</button>`;
+    domString += `<button class="btn btn-danger scary-btn" type="submit">Scary!</button>`;
     domString += `</div>`;
     if (i % 3 === 2) {
       domString += `</div>`;

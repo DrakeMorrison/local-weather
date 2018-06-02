@@ -41,8 +41,24 @@ function getSavedForecasts () {
   });
 }
 
+function deleteForecast (forecastId) {
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      method: 'DELETE',
+      url: `${firebaseConfig.databaseURL}/forecasts/${forecastId}.json`,
+    })
+      .done(function () {
+        resolve();
+      })
+      .fail(function (error) {
+        reject(error);
+      });
+  });
+}
+
 module.exports = {
   setConfig,
   saveForecast,
   getSavedForecasts,
+  deleteForecast,
 };

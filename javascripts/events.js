@@ -73,7 +73,7 @@ function addSaveEvent () {
       'description': forecastCard.find('.description').data('description'),
       'airPressure': forecastCard.find('.air-pressure').data('air-pressure'),
       'windSpeed': forecastCard.find('.wind-speed').data('wind-speed'),
-      'isScary': false,
+      'isScary': forecastCard.data('isscary'),
     };
     firebaseApi.saveForecast(forecastObj);
   });
@@ -81,14 +81,31 @@ function addSaveEvent () {
 
 function addViewSavedEvent () {
   $('#saved-forecasts-btn').on('click', function () {
-    firebaseApi.getSavedForecasts().then(function (results) {
-      dom.buildSavedForecasts(results);
-      $('#output').hide();
-      $('#3dayoutput').hide();
-      $('#5dayoutput').hide();
-      $('#saved-forecasts-div').show();
-      $('#current-weather-btn').show();
-    });
+    showSavedForecasts();
+    deleteForecastEvent();
+    scaryForecastEvent();
+    $('#output').hide();
+    $('#3dayoutput').hide();
+    $('#5dayoutput').hide();
+    $('#saved-forecasts-div').show();
+    $('#current-weather-btn').show();
+  });
+}
+
+function deleteForecastEvent () {
+  $(document).on('click', '.delete-btn', function (e) {
+    const fbForecastId = $(e.target).siblings('.panel').data('firebaseId');
+    firebaseApi.deleteForecast(fbForecastId)
+      .then(showSavedForecasts)
+      .catch(console.error.bind(console));
+  });
+}
+
+function scaryForecastEvent () {}
+
+function showSavedForecasts () {
+  firebaseApi.getSavedForecasts().then(function (results) {
+    dom.buildSavedForecasts(results);
   });
 }
 
