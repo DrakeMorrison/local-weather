@@ -41,8 +41,20 @@ function getSavedForecasts () {
   });
 }
 
+function deleteForecast (forecastId) {
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      method: 'DELETE',
+      url: '',
+    })
+      .done()
+      .fail();
+  });
+}
+
 module.exports = {
   setConfig,
   saveForecast,
   getSavedForecasts,
+  deleteForecast,
 };

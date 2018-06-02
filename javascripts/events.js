@@ -73,7 +73,7 @@ function addSaveEvent () {
       'description': forecastCard.find('.description').data('description'),
       'airPressure': forecastCard.find('.air-pressure').data('air-pressure'),
       'windSpeed': forecastCard.find('.wind-speed').data('wind-speed'),
-      'isScary': false,
+      'isScary': forecastCard.data('isscary'),
     };
     firebaseApi.saveForecast(forecastObj);
   });
