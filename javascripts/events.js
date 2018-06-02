@@ -42,20 +42,21 @@ function addForecastButtons () {
     $('#current-weather-btn').show();
     $('#output').hide();
     $('#5dayoutput').hide();
+    $('#saved-forecasts-div').hide();
   });
   $('#5daybtn').on('click', function () {
     $('#5dayoutput').show();
     $('#current-weather-btn').show();
     $('#output').hide();
     $('#3dayoutput').hide();
+    $('#saved-forecasts-div').hide();
   });
 }
 
 function addCurrentWeatherButton () {
   $('#current-weather-btn').on('click', function () {
     $('#output').show();
-    $('#3dayoutput').hide();
-    $('#5dayoutput').hide();
+    $('#output').siblings('.row').hide();
     $('#current-weather-btn').hide();
   });
 }
@@ -86,6 +87,7 @@ function addViewSavedEvent () {
       $('#3dayoutput').hide();
       $('#5dayoutput').hide();
       $('#saved-forecasts-div').show();
+      $('#current-weather-btn').show();
     });
   });
 }
