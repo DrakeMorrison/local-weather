@@ -85,7 +85,10 @@ function printToDom (str, id) {
 
 function buildSavedForecasts (inputArray) {
   let domString = '';
-  inputArray.forEach(function (input) {
+  inputArray.forEach(function (input, i) {
+    if (i % 3 === 0) {
+      domString += `<div class='row'>`;
+    }
     domString += `<div class='col-md-4'>`;
     domString += `<div class="panel panel-default">`;
     domString += `<div class="panel-heading">${input.nameDate}</div>`;
@@ -101,6 +104,9 @@ function buildSavedForecasts (inputArray) {
     domString += `</div>`;
     domString += `<button class="btn btn-danger" type="submit">Delete</button>`;
     domString += `</div>`;
+    if (i % 3 === 2) {
+      domString += `</div>`;
+    }
   });
   printToDom(domString, '#saved-forecasts-div');
 }
