@@ -3,7 +3,7 @@ function buildCurrentWeather (weatherData) {
   let domString = '';
   domString += `<div class='col-md-12'>`;
   domString += `<h1>Current Weather</h1>`;
-  domString += `<div class="panel panel-default" data-isScary='false'>`;
+  domString += `<div class="panel panel-default">`;
   domString += `<div class="panel-heading nameDate" data-nameDate='${weatherData.name}'>${weatherData.name}</div>`;
   domString += `<ul class="list-group">`;
   domString += `<li class="list-group-item main-temp" data-main-temp='${weatherData.main.temp}'>Temperature: <strong class='main-temp'>${weatherData.main.temp}</strong>&#176;F</li>`;
@@ -30,7 +30,7 @@ function build5DayWeather (data) {
     } else {
       domString += `<div class='col-md-2'>`;
     }
-    domString += `<div class="panel panel-default" data-isScary='false'>`;
+    domString += `<div class="panel panel-default">`;
     domString += `<div class="panel-heading nameDate" data-nameDate='${data.list[i].dt_txt}'>${data.list[i].dt_txt}</div>`;
     domString += `<ul class="list-group">`;
     domString += `<li class="list-group-item">Temperature: <strong class='main-temp' data-main-temp='${data.list[i].main.temp}'>${data.list[i].main.temp}</strong>&#176;F</li>`;
@@ -54,7 +54,7 @@ function build3DayWeather (data) {
   domString += `<h1>3 Day Forecast</h1>`;
   for (let i = 4; i < 28; i += 8) {
     domString += `<div class='col-md-4'>`;
-    domString += `<div class="panel panel-default" data-isScary='false'>`;
+    domString += `<div class="panel panel-default">`;
     domString += `<div class="panel-heading nameDate" data-nameDate='${data.list[i].dt_txt}'>${data.list[i].dt_txt}</div>`;
     domString += `<ul class="list-group">`;
     domString += `<li class="list-group-item">Temperature: <strong class='main-temp' data-main-temp='${data.list[i].main.temp}'>${data.list[i].main.temp}</strong>&#176;F</li>`;
@@ -90,16 +90,16 @@ function buildSavedForecasts (inputArray) {
       domString += `<div class='row'>`;
     }
     domString += `<div class='col-md-4'>`;
-    domString += `<div class="panel panel-${input.isScary ? 'danger' : 'default'}" data-isScary=${input.isScary} data-firebase-id=${input.id}>`;
-    domString += `<div class="panel-heading">${input.nameDate}</div>`;
+    domString += `<div class="panel panel-${input.isScary ? 'danger' : 'default'}" data-firebase-id=${input.id}>`;
+    domString += `<div class="panel-heading nameDate" data-nameDate='${input.nameDate}'>${input.nameDate}</div>`;
     domString += `<ul class="list-group">`;
-    domString += `<li class="list-group-item">Temperature: <strong>${input.mainTemp}</strong>&#176;F</li>`;
-    domString += `<li class="list-group-item">High: ${input.maxTemp}&#176;F</li>`;
-    domString += `<li class="list-group-item">Low: ${input.minTemp}&#176;F</li>`;
-    domString += `<li class="list-group-item">Humidity: ${input.humidity}%</li>`;
-    domString += `<li class="list-group-item text-capitalize">${input.description}</li>`;
-    domString += `<li class="list-group-item">Air Pressure: ${input.airPressure} hpa</li>`;
-    domString += `<li class="list-group-item">Wind Speed: ${input.windSpeed} MPH</li>`;
+    domString += `<li class="list-group-item">Temperature: <strong class='main-temp' data-main-temp='${input.mainTemp}'>${input.mainTemp}</strong>&#176;F</li>`;
+    domString += `<li class="list-group-item max-temp" data-max-temp='${input.maxTemp}'>High: ${input.maxTemp}&#176;F</li>`;
+    domString += `<li class="list-group-item min-temp" data-min-temp='${input.minTemp}'>Low: ${input.minTemp}&#176;F</li>`;
+    domString += `<li class="list-group-item humidity" data-humidity='${input.humidity}'>Humidity: ${input.humidity}%</li>`;
+    domString += `<li class="list-group-item text-capitalize description" data-description='${input.description}'>${input.description}</li>`;
+    domString += `<li class="list-group-item air-pressure" data-air-pressure='${input.airPressure}'>Air Pressure: ${input.airPressure} hpa</li>`;
+    domString += `<li class="list-group-item wind-speed" data-wind-speed='${input.windSpeed}'>Wind Speed: ${input.windSpeed} MPH</li>`;
     domString += `</ul>`;
     domString += `</div>`;
     domString += `<button class="btn btn-danger delete-btn" type="submit">Delete</button>`;

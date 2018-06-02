@@ -56,9 +56,26 @@ function deleteForecast (forecastId) {
   });
 }
 
+function updateForecast (modifiedForecast, forecastId) {
+  return new Promise(function (resolve, reject) {
+    $.ajax({
+      method: 'PUT',
+      url: `${firebaseConfig.databaseURL}/forecasts/${forecastId}.json`,
+      data: JSON.stringify(modifiedForecast),
+    })
+      .done(function (newForecast) {
+        resolve(newForecast);
+      })
+      .fail(function (error) {
+        reject(error);
+      });
+  });
+}
+
 module.exports = {
   setConfig,
   saveForecast,
   getSavedForecasts,
   deleteForecast,
+  updateForecast,
 };
