@@ -1,5 +1,5 @@
 body {
-  background: gray;
+  background: #eee;
 }
 
 .search-bar {
@@ -8,7 +8,7 @@ body {
 }
 
 .text-white {
-  color: white;
+  color: black;
 }
 
 #current-weather-btn, #saved-forecasts-btn {
