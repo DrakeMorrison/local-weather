@@ -19,3 +19,13 @@ body {
 .btn-danger {
   margin-bottom: 40px;
 }
+
+.OAuth-title {
+  padding-top: 30px;
+}
+
+.auth-icon {
+  height: 75px;
+  width: 75px;
+  display: inline-block;
+}
