@@ -90,7 +90,7 @@ function buildSavedForecasts (inputArray) {
       domString += `<div class='row'>`;
     }
     domString += `<div class='col-md-4'>`;
-    domString += `<div class="panel panel-${input.isScary ? 'danger' : 'default'}" data-firebase-id=${input.id}>`;
+    domString += `<div class="panel panel-${input.isScary ? 'danger' : 'default'}" data-firebase-id='${input.id}' data-uid='${input.uid}'>`;
     domString += `<div class="panel-heading nameDate" data-nameDate='${input.nameDate}'>${input.nameDate}</div>`;
     domString += `<ul class="list-group">`;
     domString += `<li class="list-group-item">Temperature: <strong class='main-temp' data-main-temp='${input.mainTemp}'>${input.mainTemp}</strong>&#176;F</li>`;

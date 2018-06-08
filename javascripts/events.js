@@ -6,7 +6,7 @@ const firebaseApi = require('./firebaseApi.js');
 function addSubmitEvent () {
   $('#submit-btn').on('click', startProcess);
   $(document).on('keydown', function (e) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 && $('#logout-btn').is(':visible')) {
       startProcess();
     }
   });
@@ -115,6 +115,7 @@ function scaryForecastEvent () {
       'airPressure': forecastCard.find('.air-pressure').data('air-pressure'),
       'windSpeed': forecastCard.find('.wind-speed').data('wind-speed'),
       'isScary': true,
+      'uid': forecastCard.data('uid'),
     };
     firebaseApi.updateForecast(forecastToUpdate, fbForecastId)
       .then(function () {
@@ -130,8 +131,50 @@ function showSavedForecasts () {
   });
 }
 
+function authEvents () {
+  $('#search-bar-div, #output-div, #register-form, #logout-btn').hide();
+  $('#authScreen').show();
+
+  $('#sign-in-btn').click(function (e) {
+    e.preventDefault();
+    const email = $('#login-email').val();
+    const pass = $('#login-password').val();
+    firebase.auth().signInWithEmailAndPassword(email, pass)
+      .catch((error) => {
+        $('#sign-in-error-msg').text(error.message);
+        $('#sign-in-error').removeClass('hide');
+      });
+  });
+
+  $('#register-btn').click(function (e) {
+    e.preventDefault();
+    const email = $('#register-email').val();
+    const pass = $('#register-password').val();
+    firebase.auth().createUserWithEmailAndPassword(email, pass)
+      .catch((error) => {
+        $('#register-error-msg').text(error.message);
+        $('#register-error').removeClass('hide');
+      });
+  });
+
+  $('#logout-btn').click(function () {
+    firebase.auth().signOut().catch(console.error.bind(console));
+  });
+
+  $('#show-sign-in').click(function () {
+    $('#login-form').show();
+    $('#register-form').hide();
+  });
+
+  $('#show-register').click(function () {
+    $('#login-form').hide();
+    $('#register-form').show();
+  });
+}
+
 module.exports = {
   addSubmitEvent,
   addSaveEvent,
   addViewSavedEvent,
+  authEvents,
 };

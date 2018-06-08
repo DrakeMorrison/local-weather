@@ -1,14 +1,15 @@
 body {
-  background: gray;
+  background: #eee;
 }
 
 .search-bar {
   width: 50%;
   padding-bottom: 1.5em;
+  padding-top: 10px;
 }
 
 .text-white {
-  color: white;
+  color: black;
 }
 
 #current-weather-btn, #saved-forecasts-btn {

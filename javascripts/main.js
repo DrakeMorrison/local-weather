@@ -8,4 +8,5 @@ const events = require('./events.js');
   events.addSubmitEvent();
   events.addSaveEvent();
   events.addViewSavedEvent();
+  events.authEvents();
 })();

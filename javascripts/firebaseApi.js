@@ -1,12 +1,18 @@
 'use strict';
 
 let firebaseConfig = {};
+let uid = '';
 
 function setConfig (input) {
   firebaseConfig = input;
 }
 
+function setUID (input) {
+  uid = input;
+}
+
 function saveForecast (input) {
+  input.uid = uid;
   return new Promise(function (resolve, reject) {
     $.ajax({
       method: 'POST',
@@ -25,7 +31,7 @@ function saveForecast (input) {
 function getSavedForecasts () {
   const forecastsAndKeys = [];
   return new Promise(function (resolve, reject) {
-    $.ajax(`${firebaseConfig.databaseURL}/forecasts.json`)
+    $.ajax(`${firebaseConfig.databaseURL}/forecasts.json?orderBy="uid"&equalTo="${uid}"`)
       .then(function (allForecasts) {
         if (allForecasts !== null) {
           Object.keys(allForecasts).forEach(function (key) {
@@ -78,4 +84,5 @@ module.exports = {
   getSavedForecasts,
   deleteForecast,
   updateForecast,
+  setUID,
 };
